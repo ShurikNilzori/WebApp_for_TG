@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,8 @@
             --bg-color: #1a1a24;
             --board-bg: #2d2d3f;
             --cell-bg: #3f3f5a;
-            --cell-safe: #5a5a7e; /* Цвет безопасной неоткрытой ячейки */
+            --cell-safe: #5a5a7e;
+            /* Цвет безопасной неоткрытой ячейки */
             --cell-hover: #5a5a7e;
             --cell-revealed: #e0e0e0;
             --text-color: #f0f0f0;
@@ -53,7 +55,7 @@
             background: var(--board-bg);
             padding: 10px 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .stat-box span {
@@ -70,7 +72,7 @@
             background: var(--board-bg);
             padding: 10px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
         }
 
@@ -84,14 +86,14 @@
             font-size: 1.2em;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
             position: relative;
         }
 
         /* Новый стиль для безопасных зон, которые просканировал радар */
         .cell.safe-zone:not(.revealed) {
             background-color: var(--cell-safe);
-            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15);
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
         }
 
         .cell:hover:not(.revealed) {
@@ -102,7 +104,7 @@
         .cell.revealed {
             background-color: var(--cell-revealed);
             color: #333;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
             cursor: default;
         }
 
@@ -116,10 +118,11 @@
 
         .cell.safe-zone:not(.revealed)::before {
             content: '🍄';
-            font-size: 1.0em; /* У лисички 1.5em, у обычного текста 1.2em */
+            font-size: 1.0em;
+            /* У лисички 1.5em, у обычного текста 1.2em */
             animation: pop 0.3s ease;
         }
-        
+
         /* Класс для вспышки безопасных линий (при нуле) */
         .cell.highlight-line:not(.revealed) {
             background-color: rgba(46, 204, 113, 0.7) !important;
@@ -132,28 +135,73 @@
         }
 
         @keyframes pop {
-            0% { transform: scale(0.5); opacity: 0; }
-            80% { transform: scale(1.2); }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        
+
         @keyframes text-flash {
-            0% { transform: scale(1); color: var(--accent); }
-            50% { transform: scale(1.4); color: var(--accent); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+                color: var(--accent);
+            }
+
+            50% {
+                transform: scale(1.4);
+                color: var(--accent);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* Цвета для цифр радара */
-        .cell.revealed.val-1 { color: #1565c0; }
-        .cell.revealed.val-2 { color: #2e7d32; }
-        .cell.revealed.val-3 { color: #c62828; }
-        .cell.revealed.val-4 { color: #4527a0; }
-        .cell.revealed.val-5 { color: #ef6c00; }
-        .cell.revealed.val-6 { color: #00838f; }
-        .cell.revealed.val-7 { color: #424242; }
-        .cell.revealed.val-8 { color: #000000; }
+        .cell.revealed.val-1 {
+            color: #1565c0;
+        }
 
-        .controls { margin-top: 25px; }
+        .cell.revealed.val-2 {
+            color: #2e7d32;
+        }
+
+        .cell.revealed.val-3 {
+            color: #c62828;
+        }
+
+        .cell.revealed.val-4 {
+            color: #4527a0;
+        }
+
+        .cell.revealed.val-5 {
+            color: #ef6c00;
+        }
+
+        .cell.revealed.val-6 {
+            color: #00838f;
+        }
+
+        .cell.revealed.val-7 {
+            color: #424242;
+        }
+
+        .cell.revealed.val-8 {
+            color: #000000;
+        }
+
+        .controls {
+            margin-top: 25px;
+        }
 
         button {
             background: var(--accent);
@@ -168,13 +216,22 @@
             box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
         }
 
-        button:hover { background: #ff8555; transform: translateY(-2px); }
-        button:active { transform: translateY(1px); }
+        button:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
 
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -183,30 +240,50 @@
             transition: opacity 0.3s;
             z-index: 10;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         .modal-content {
             background: var(--board-bg);
             padding: 40px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             transform: translateY(20px);
             transition: transform 0.3s;
             border: 2px solid var(--accent);
         }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-content h2 { margin-top: 0; color: var(--accent); font-size: 2em; }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 2em;
+        }
 
         @media (max-width: 500px) {
             .board {
                 grid-template-columns: repeat(10, 30px);
                 grid-template-rows: repeat(10, 30px);
             }
-            .cell { font-size: 1em; }
-            .cell.fox { font-size: 1.2em; }
+
+            .cell {
+                font-size: 1em;
+            }
+
+            .cell.fox {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <h1>Охота на лис</h1>
@@ -226,7 +303,8 @@
     <div class="modal-overlay" id="win-modal">
         <div class="modal-content">
             <h2>Охота завершена! 🦊</h2>
-            <p>Вы нашли всех лис за <span id="final-turns" style="color: var(--accent); font-weight:bold; font-size: 1.2em;"></span> ходов.</p>
+            <p>Вы нашли всех лис за <span id="final-turns"
+                    style="color: var(--accent); font-weight:bold; font-size: 1.2em;"></span> ходов.</p>
             <button onclick="initGame()" style="margin-top: 15px;">Играть снова</button>
         </div>
     </div>
@@ -234,7 +312,7 @@
     <script>
         const SIZE = 10;
         const TOTAL_FOXES = 9;
-        
+
         let board = [];
         let foxes = [];
         let foxesFound = 0;
@@ -253,7 +331,7 @@
             foxesFound = 0;
             turns = 0;
             isGameOver = false;
-            
+
             foxesCountEl.textContent = foxesFound;
             turnsCountEl.textContent = turns;
             winModal.classList.remove('active');
@@ -279,7 +357,7 @@
                 let c = Math.floor(Math.random() * SIZE);
                 if (!board[r][c].isFox) {
                     board[r][c].isFox = true;
-                    foxes.push({r, c, found: false});
+                    foxes.push({ r, c, found: false });
                     placed++;
                 }
             }
@@ -288,7 +366,7 @@
         function countVisibleFoxes(r, c) {
             let count = 0;
             for (let fox of foxes) {
-                if (fox.found) continue; 
+                if (fox.found) continue;
                 if (fox.r === r || fox.c === c || Math.abs(fox.r - r) === Math.abs(fox.c - c)) {
                     count++;
                 }
@@ -317,7 +395,7 @@
                 el.classList.add('highlight-line');
                 el.classList.add('safe-zone');
             });
-            
+
             // Убираем яркую зеленую вспышку через 400 мс (цвет safe-zone останется)
             setTimeout(() => {
                 cellsToHighlight.forEach(el => el.classList.remove('highlight-line'));
@@ -328,16 +406,16 @@
             for (let i = 0; i < SIZE; i++) {
                 for (let j = 0; j < SIZE; j++) {
                     const cellObj = board[i][j];
-                    
+
                     if (cellObj.isRevealed && !cellObj.isFox) {
                         if (i === foundFoxR || j === foundFoxC || Math.abs(i - foundFoxR) === Math.abs(j - foundFoxC)) {
                             const el = document.querySelector(`.cell[data-r="${i}"][data-c="${j}"]`);
                             let currentVal = parseInt(el.textContent) || 0;
-                            
+
                             if (currentVal > 0) {
                                 el.classList.remove(`val-${currentVal > 8 ? 8 : currentVal}`);
                                 el.classList.remove('update-flash');
-                                
+
                                 void el.offsetWidth; // Форсируем перерисовку
 
                                 let newVal = currentVal - 1;
@@ -347,13 +425,13 @@
                                     el.classList.add('update-flash');
                                 } else {
                                     // Значение стало 0 - очищаем текст
-                                    el.textContent = ''; 
+                                    el.textContent = '';
                                     el.classList.add('update-flash');
-                                    
+
                                     // ЦЕПНАЯ РЕАКЦИЯ: запускаем радар с небольшой задержкой для красивого эффекта
                                     setTimeout(() => {
                                         highlightZeroLines(i, j);
-                                    }, 250); 
+                                    }, 250);
                                 }
                             }
                         }
@@ -381,7 +459,7 @@
                 e.target.textContent = '🦊';
                 foxesFound++;
                 foxesCountEl.textContent = foxesFound;
-                
+
                 let foxObj = foxes.find(f => f.r === r && f.c === c);
                 if (foxObj) foxObj.found = true;
 
@@ -392,7 +470,7 @@
                 }
             } else {
                 const visible = countVisibleFoxes(r, c);
-                
+
                 if (visible > 0) {
                     e.target.textContent = visible;
                     e.target.classList.add(`val-${visible > 8 ? 8 : visible}`);
@@ -413,12 +491,13 @@
         initGame();
     </script>
     <script>
-    // Сообщаем Telegram, что приложение готово к отображению
-    if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-        // Можно даже развернуть игру на весь экран
-        window.Telegram.WebApp.expand(); 
-    }
+        // Сообщаем Telegram, что приложение готово к отображению
+        if (window.Telegram && window.Telegram.WebApp) {
+            window.Telegram.WebApp.ready();
+            // Можно даже развернуть игру на весь экран
+            window.Telegram.WebApp.expand();
+        }
     </script>
 </body>
+
 </html>
