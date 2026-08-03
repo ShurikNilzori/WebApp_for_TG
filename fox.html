@@ -113,6 +113,12 @@
             box-shadow: 0 0 15px var(--accent);
             z-index: 2;
         }
+
+        .cell.safe-zone:not(.revealed)::before {
+            content: '🍄';
+            font-size: 1.0em; /* У лисички 1.5em, у обычного текста 1.2em */
+            animation: pop 0.3s ease;
+        }
         
         /* Класс для вспышки безопасных линий (при нуле) */
         .cell.highlight-line:not(.revealed) {
