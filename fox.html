@@ -11,9 +11,9 @@
             --bg-color: #1a1a24;
             --board-bg: #2d2d3f;
             --cell-bg: #3f3f5a;
-            --cell-safe: #617d67;
+            --cell-safe: #6B8A72;
             /* Цвет безопасной неоткрытой ячейки */
-            --cell-hover: #617d67;
+            --cell-hover: #6B8A72;
             --cell-revealed: #e0e0e0;
             --text-color: #f0f0f0;
             --accent: #ff6b35;
@@ -63,6 +63,28 @@
             font-weight: bold;
             font-size: 1.3em;
         }
+
+        .stat-box .stat-diff {
+            font-size: 0.7em;
+            margin-left: 3px;
+            font-weight: bold;
+        }
+
+        .stat-box .diff-minus {
+            color: #31D978;
+        }
+
+        /* Зеленый */
+        .stat-box .diff-plus {
+            color: #ff3f3f;
+        }
+
+        /* Красный */
+        .stat-box .diff-equal {
+            color: #888888;
+        }
+
+        /* Серый */
 
         .board {
             display: grid;
@@ -119,6 +141,7 @@
         .cell.safe-zone:not(.revealed)::before {
             content: '🍄';
             font-size: 0.7em;
+            /* У лисички 1.5em, у обычного текста 1.2em */
             animation: pop 0.3s ease;
         }
 
@@ -291,6 +314,8 @@
     <div class="stats">
         <div class="stat-box">Лисы: <span id="foxes-count">0</span> / 9</div>
         <div class="stat-box">Ходы: <span id="turns-count">0</span></div>
+        <div class="stat-box">Результат: <span id="record-count">-</span><span id="record-diff"
+                class="stat-diff"></span></div>
     </div>
 
     <div class="board" id="board"></div>
@@ -316,6 +341,7 @@
         let foxes = [];
         let foxesFound = 0;
         let turns = 0;
+        let prevRecord = 100;
         let isGameOver = false;
 
         const boardEl = document.getElementById('board');
@@ -323,6 +349,16 @@
         const turnsCountEl = document.getElementById('turns-count');
         const winModal = document.getElementById('win-modal');
         const finalTurnsEl = document.getElementById('final-turns');
+        const recordCountEl = document.getElementById('record-count');
+        const recordDiffEl = document.getElementById('record-diff');
+
+        // Загрузка сохранённого рекорда при старте
+        function loadRecord() {
+            const savedRecord = null; //localStorage.getItem('fox_record');
+            if (savedRecord !== null) {
+                recordCountEl.textContent = savedRecord;
+            }
+        }
 
         function initGame() {
             board = [];
@@ -330,9 +366,11 @@
             foxesFound = 0;
             turns = 0;
             isGameOver = false;
+            //loadRecord();
 
             foxesCountEl.textContent = foxesFound;
             turnsCountEl.textContent = turns;
+            recordCountEl.textContent = prevRecord;
             winModal.classList.remove('active');
             boardEl.innerHTML = '';
 
@@ -481,6 +519,27 @@
 
         function gameOver() {
             isGameOver = true;
+
+
+            if (prevRecord !== null) {
+                const prev = prevRecord;
+                const diff = turns - prev;
+
+                if (diff > 0) {
+                    recordDiffEl.textContent = `+${diff}`;
+                    recordDiffEl.className = 'stat-diff diff-plus';
+                } else if (diff < 0) {
+                    recordDiffEl.textContent = `${diff}`;
+                    recordDiffEl.className = 'stat-diff diff-minus';
+                } else {
+                    recordDiffEl.textContent = '=';
+                    recordDiffEl.className = 'stat-diff diff-equal';
+                }
+            }
+
+            prevRecord = turns;
+            recordCountEl.textContent = turns;
+
             setTimeout(() => {
                 finalTurnsEl.textContent = turns;
                 winModal.classList.add('active');
