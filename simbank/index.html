@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Time</title>
+    <link rel="stylesheet" href="sim_bank.css">
+</head>
+
+<body>
+    <div class="world-panel">
+        <!-- Левая колонка -->
+        <div class="left-panel">
+            <!-- Календарь -->
+            <div class="glass-clock">
+                <div class="clock-label"> ТЕКУЩЕЕ ВРЕМЯ </div>
+                <div id="clock" class="clock-time"> 00:00 </div>
+                <div id="date" class="clock-date"> 14 Сентября 2026 </div>
+            </div>
+            <!-- Управление временем -->
+            <div class="time-controls">
+                <button id="pauseBtn" class="control-button" title="Пауза"> ⏸ </button>
+                <button id="startBtn" class="control-button" title="Пуск"> ▶ </button>
+                <button id="addTimeBtn" class="control-button" title="Ускорение"> 🡆 </button>
+            </div>
+            <!-- Список людей -->
+            <div class="people-list" id="peopleList"> </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="bank-office">
+                <div class="bank-label"> БАНК РОГА И КОПЫТА </div>
+            </div>
+            <!-- Карточка выбранного человека -->
+            <div id="personCard" class="person-card hidden">
+                <div class="person-info">
+                    <div id="personGenre" class="person-genre"> 👨🏻 </div>
+                    <div class="person-details">
+                        <div id="personPass" class="person-pass"> Паспорт №1016 </div>
+                        <div id="personFio" class="person-fio">
+                            <span class="fio-first"> Гаврилов </span>
+                            <span class="fio-rest"> Сергей Максимович </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Банковская карточка -->
+                <div class="credit-card">
+                    <div class="credit-title"> CREDIT CARD </div>
+                    <div class="cash-row">
+                        <div class="cash-value" id="personCash"> 1000 </div>
+                    </div>
+                    <div class="bank-separator"></div>
+                    <div id="bankInfo" class="bank-info">
+                        <div class="bank-account"> <span id="personAccount"> 123456 </span> </div>
+                        <div class="bank-balance"> <span id="personBalance"> 0 </span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-panel">
+            <div class="stat-info">
+                <div class="stat-label"> СТАТИСТИКА </div>
+                <div class="most-rich">
+                    <div id="listRich" class="list-rich"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="sim_bank.js"></script>
+</body>
+
+</html>
