@@ -103,7 +103,7 @@ for (let i = 0; i < maxClients; i++) {
     allpeople.push(newpers)
 }
 console.log(allpeople)
-allpeople.sort((a, b) => a.body.fio - b.body.fio)
+allpeople.sort((a, b) => a.body.fio.localeCompare(b.body.fio, 'ru'))
 console.log(allpeople)
 //allpeople[0].bank.acc = genNumAcc(allpeople[0].body.pass, 12)
 //allpeople[0].bank.balance = 100000000
