@@ -102,7 +102,7 @@ for (let i = 0; i < maxClients; i++) {
     const newpers = new Peoples()
     allpeople.push(newpers)
 }
-allpeople = allpeople.sort((a, b) => a.body.fio - b.body.fio)
+allpeople.sort((a, b) => a.body.fio - b.body.fio)
 //allpeople[0].bank.acc = genNumAcc(allpeople[0].body.pass, 12)
 //allpeople[0].bank.balance = 100000000
 
