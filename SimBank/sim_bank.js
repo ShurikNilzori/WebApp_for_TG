@@ -156,7 +156,7 @@ function showPerson(data) {
     const buttons = document.querySelectorAll('.person-button')
     buttons.forEach(b => b.innerText === data.body.fio ? b.classList.toggle('active') : b.classList.remove('active'))
     document.getElementById('personGenre').textContent = data.body.genre === 'm' ? '👨🏻' : '👩🏻'
-    document.getElementById('personPass').textContent = `${data.body.numpass} ${data.evtm.toLocaleString()}`
+    document.getElementById('personPass').textContent = `${data.body.numpass}`
     const fio = data.body.fio.trim().split(/\s+/)
     document.getElementById('personFio').innerHTML = `<span class='fio-first'>${fio[0]}</span><span class='fio-rest'>${fio.slice(1).join(' ')}</span>`
     document.getElementById('personCash').textContent = '💵 ' + data.cash.toLocaleString('ru-RU') + ' ₴'
