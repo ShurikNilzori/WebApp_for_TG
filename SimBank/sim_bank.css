@@ -1,0 +1,579 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #243b55 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #141e30 0%,
+            transparent 45%
+        ),
+        #080d14;
+}
+
+
+/* =========================
+   Основная панель
+   ========================= */
+
+.world-panel {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+
+/* =========================
+   Левая колонка
+   ========================= */
+
+.left-panel {
+    position: relative;
+
+    width: 450px;
+
+    padding-right: 68px;
+}
+
+.right-panel {
+    position: relative;
+}
+
+
+/* =========================
+   Часы
+   ========================= */
+
+.glass-clock {
+    width: 360px;
+
+    padding: 28px 35px 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+
+.clock-label {
+    margin-bottom: 10px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+
+.clock-time {
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 72px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+}
+
+
+.clock-date {
+    margin-top: 16px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   Управление временем
+   ========================= */
+
+.time-controls {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.control-button {
+    width: 58px;
+    height: 58px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 22px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+    cursor: pointer;
+
+    transition: 0.15s;
+}
+
+
+.control-button:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+
+.control-button:active {
+    transform: scale(0.92);
+}
+
+.control-button.active {
+    background: rgba(55, 255, 55, 0.32);
+}
+
+
+/* =========================
+   Список людей
+   ========================= */
+
+.people-list {
+    width: 450px;
+
+    margin-top: 30px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    padding-right: 12px;
+}
+
+
+/* Скроллбар */
+
+.people-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.people-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+
+    border-radius: 10px;
+}
+
+.people-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+
+    border-radius: 10px;
+}
+
+
+/* Кнопка человека */
+
+.person-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    margin-bottom: 8px;
+
+    padding: 0 18px;
+
+    text-align: left;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 16px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.person-button:hover {
+    background: rgba(255, 255, 255, 0.14);
+
+    transform: translateX(3px);
+}
+
+
+.person-button:active {
+    transform: scale(0.98);
+}
+
+.person-button.active {
+    background: rgba(55, 55, 255, 0.32);
+}
+
+/* ==== Банковский Оффис ==== */
+
+.bank-office {
+    width: 420px;
+
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.bank-label {
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+ 
+/* =========================
+   Карточка человека
+   ========================= */
+
+.person-card {
+    width: 420px;
+    margin-top: 30px;
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+
+/* Иконка + информация */
+
+.person-info {
+
+   display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+/* Пол */
+
+.person-genre {
+
+flex: 0 0 90px;
+
+    width: 90px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 70px;
+    line-height: 1;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* Правая часть */
+
+.person-details {
+    flex: 1;
+    --padding: 8px;
+    min-width: 0;
+}
+
+
+/* Паспорт */
+
+.person-pass {
+    margin-bottom: 16px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* ФИО */
+
+.person-fio {
+    display: flex;
+
+    flex-direction: column;
+
+    color: white;
+}
+
+
+.fio-first {
+    font-size: 28px;
+
+    font-weight: 600;
+
+    line-height: 1.1;
+}
+
+
+.fio-rest {
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 17px;
+
+    line-height: 1.2;
+}
+
+/* =========================
+   CREDIT CARD
+   ========================= */
+
+.credit-card {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 16px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 16px;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* Заголовок */
+
+.credit-title {
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 13px;
+}
+
+
+/* Наличные */
+
+.cash-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.cash-icon {
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+
+.cash-value {
+    color: rgba(255, 255, 255, 0.92);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* Разделитель */
+
+.bank-separator {
+    height: 1px;
+
+    margin: 14px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+}
+
+
+/* Банковская информация */
+
+.bank-info {
+    text-align: center;
+}
+
+
+.bank-account {
+  background-color: rgba(255, 255, 255, 0.20); /* Светло-серый пластик карты */
+  color: rgba(0, 0, 0, 0.30);            /* Цвет текста чуть темнее фона */
+  font-family: 'Courier New', monospace; /* Моноширинный шрифт как на карте */
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-shadow: 
+    -1px -1px 1px rgba(255, 255, 255, 0.9), /* Верхний левый БЛИК (белый) */
+     1px  1px 2px rgba(0, 0, 0, 0.9);       /* Нижняя правая ТЕНЬ (тёмная) */
+  border: 1px solid rgba(250, 180, 30, 0.9);
+  line-height: 30px;
+}
+
+
+.bank-balance {
+    margin-top: 4px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 27px;
+
+    font-weight: bold;
+}
+
+
+/* Скрытая карточка */
+
+.hidden {
+    display: none;
+}
