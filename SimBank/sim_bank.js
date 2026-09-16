@@ -190,6 +190,15 @@ function updateClock() {
     document.getElementById('date').textContent = `${curTime.getDate()} ${months[curTime.getMonth()]} ${curTime.getFullYear()}`
 }
 
-function getMostRich() {
-
+function getMostRich(Kolvo = 1) {
+    const best = allpeople.sort((a, b) => b.cash - a.cash).slice(0, Kolvo)
+    const list = best.map(person => {
+        const [lastName, firstName, middleName] = person.fio.trim().split(/\s+/)
+        const formattedFio = `${lastName} ${firstName[0] + '.'}${middleName[0] + '.'}`
+        return {
+            fio: formattedFio,
+            cash: person.cash
+        }
+    })
+    document.getElementById('listRich').textContent = list.map((pers, idx) => { `${idx + 1}. ${pers.fio} - ${pers.cash} ₴` }).join('<br>')
 }
