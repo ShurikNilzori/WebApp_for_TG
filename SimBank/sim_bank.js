@@ -8,9 +8,10 @@ const uniletters = 'КЕНХВАРОСМТ'
 const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня',
     'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'
 ]
+const perZP = 12 * 60
 let hideCard = null, worldRunning = true, timespeed = 1, curTime = new Date()
 curTime.setHours(8, 0, 0, 0)
-let nextStatUp = new Date(curTime.getTime())
+let nextStatUp = new Date(curTime.getTime()), nextZP = new Date(curTime.getTime() + perZP * 60000)
 
 class Peoples {
     constructor() {
@@ -21,7 +22,12 @@ class Peoples {
     }
 
     chgMoney() {
-        if (curTime > this.evtm) {
+        if (curTime >= nextZP) {
+            nextZP.setMinutes(nextZP.getMinutes() + perZP)
+            this.cash += 1000
+            console.log('Зарплата')
+        }
+        if (curTime >= this.evtm) {
             this.evtm.setMinutes(curTime.getMinutes() + Math.floor(Math.random() * 50 + 10))
             const rndMoney = Math.floor(Math.random() * 100 + 1)
             if (Math.random() < 0.7 && this.cash >= rndMoney) {
