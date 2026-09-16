@@ -179,6 +179,7 @@ function worldtick() {
     if (!worldRunning) return
     curTime.setMinutes(curTime.getMinutes() + timespeed)
     allpeople.forEach(person => { person.chgMoney() })
+    getMostRich()
     updateClock()
 }
 
@@ -187,4 +188,8 @@ function updateClock() {
     const minutes = String(curTime.getMinutes()).padStart(2, '0')
     document.getElementById('clock').textContent = `${hours}:${minutes}`
     document.getElementById('date').textContent = `${curTime.getDate()} ${months[curTime.getMonth()]} ${curTime.getFullYear()}`
+}
+
+function getMostRich() {
+
 }
