@@ -23,7 +23,6 @@ class Peoples {
 
     chgMoney() {
         if (curTime >= nextZP) {
-            nextZP.setMinutes(nextZP.getMinutes() + perZP)
             this.cash += 1000
             console.log('Зарплата')
         }
@@ -188,6 +187,7 @@ function worldtick() {
     curTime.setMinutes(curTime.getMinutes() + timespeed)
     updateClock()
     allpeople.forEach(person => { person.chgMoney() })
+    if (curTime >= nextZP) { nextZP.setMinutes(nextZP.getMinutes() + perZP) }
     if (curTime >= nextStatUp) {
         getMostRich(3)
         nextStatUp.setMinutes(nextStatUp.getMinutes() + 15)
