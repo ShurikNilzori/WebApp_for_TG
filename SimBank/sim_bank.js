@@ -193,7 +193,7 @@ function updateClock() {
 function getMostRich(Kolvo = 1) {
     const best = allpeople.sort((a, b) => b.cash - a.cash).slice(0, Kolvo)
     const list = best.map(person => {
-        const [lastName, firstName, middleName] = person.fio.trim().split(/\s+/)
+        const [lastName, firstName, middleName] = person.body.fio.trim().split(/\s+/)
         const formattedFio = `${lastName} ${firstName[0] + '.'}${middleName[0] + '.'}`
         return {
             fio: formattedFio,
