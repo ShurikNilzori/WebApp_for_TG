@@ -93,7 +93,7 @@ class Persones {
 }
 
 //=========================================================================================================================
-const allpeople = [], maxClients = 2
+const allpeople = [], maxClients = 10
 const clients = new Persones(data)
 
 document.getElementById('startBtn').classList.toggle('active')
