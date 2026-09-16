@@ -201,5 +201,5 @@ function getMostRich(Kolvo = 1) {
         }
     })
     console.log(best, list)
-    document.getElementById('listRich').innerHTML = list.map((pers, idx) => { `${idx + 1}. ${pers.fio} - ${pers.cash} ₴` }).join('<br>')
+    document.getElementById('listRich').innerHTML = list.map((pers, idx) => {return `${idx + 1}. ${pers.fio} - ${pers.cash} ₴` }).join('<br>')
 }
