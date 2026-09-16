@@ -93,7 +93,7 @@ class Persones {
 }
 
 //=========================================================================================================================
-const allpeople = [], maxClients = 7
+const allpeople = [], maxClients = 2
 const clients = new Persones(data)
 
 document.getElementById('startBtn').classList.toggle('active')
@@ -102,7 +102,9 @@ for (let i = 0; i < maxClients; i++) {
     const newpers = new Peoples()
     allpeople.push(newpers)
 }
+console.log(allpeople)
 allpeople.sort((a, b) => a.body.fio - b.body.fio)
+console.log(allpeople)
 //allpeople[0].bank.acc = genNumAcc(allpeople[0].body.pass, 12)
 //allpeople[0].bank.balance = 100000000
 
