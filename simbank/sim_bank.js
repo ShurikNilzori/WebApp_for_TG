@@ -188,7 +188,10 @@ function worldtick() {
     curTime.setMinutes(curTime.getMinutes() + timespeed)
     updateClock()
     allpeople.forEach(person => { person.chgMoney() })
-    if (curTime >= nextZP) { nextZP.setMinutes(nextZP.getMinutes() + perZP) }
+    if (curTime >= nextZP) {
+        nextZP.setMinutes(nextZP.getMinutes() + perZP)
+        console.log('--=====--')
+    }
     if (curTime >= nextStatUp) {
         getMostRich(3)
         nextStatUp.setMinutes(nextStatUp.getMinutes() + 15)
