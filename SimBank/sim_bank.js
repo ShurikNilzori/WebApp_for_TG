@@ -10,6 +10,7 @@ const months = ['Января', 'Февраля', 'Марта', 'Апреля', 
 ]
 let hideCard = null, worldRunning = true, timespeed = 1, curTime = new Date()
 curTime.setHours(8, 0, 0, 0)
+let nextStatUp = new Date(curTime.getTime() + 15 * 60000)
 
 class Peoples {
     constructor() {
@@ -178,9 +179,12 @@ function showPerson(data) {
 function worldtick() {
     if (!worldRunning) return
     curTime.setMinutes(curTime.getMinutes() + timespeed)
-    allpeople.forEach(person => { person.chgMoney() })
-    getMostRich(3)
     updateClock()
+    allpeople.forEach(person => { person.chgMoney() })
+    if (curTime >= nextStatUp) {
+        getMostRich(3)
+        nextStatUp.setMinutes(nextStatUp.getMinutes() + 15)
+    }
 }
 
 function updateClock() {
@@ -200,6 +204,5 @@ function getMostRich(Kolvo = 1) {
             cash: person.cash
         }
     })
-    console.log(best, list)
-    document.getElementById('listRich').innerHTML = list.map((pers, idx) => {return `${idx + 1}. ${pers.fio} - ${pers.cash} ₴` }).join('<br>')
+    document.getElementById('listRich').innerHTML = list.map((pers, idx) => { return `${idx + 1}. ${pers.fio} - ${pers.cash} ₴` }).join('<br>')
 }
