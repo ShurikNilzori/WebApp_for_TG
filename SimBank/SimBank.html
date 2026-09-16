@@ -21,19 +21,8 @@
             <!-- Управление временем -->
             <div class="time-controls">
                 <button id="pauseBtn" class="control-button" title="Пауза"> ⏸ </button>
-                <button
-                    id="startBtn"
-                    class="control-button"
-                    title="Пуск">
-                    ▶
-                </button>
-
-                <button
-                    id="addTimeBtn"
-                    class="control-button"
-                    title="Ускорение">
-                    🡆
-                </button>
+                <button id="startBtn" class="control-button" title="Пуск"> ▶ </button>
+                <button id="addTimeBtn" class="control-button" title="Ускорение"> 🡆 </button>
             </div>
             <!-- Список людей -->
             <div class="people-list" id="peopleList"> </div>
@@ -41,9 +30,7 @@
 
         <div class="right-panel">
             <div class="bank-office">
-                <div class="bank-label">
-                    БАНК РОГА И КОПЫТА
-                </div>
+                <div class="bank-label"> БАНК РОГА И КОПЫТА </div>
             </div>
             <!-- Карточка выбранного человека -->
             <div id="personCard" class="person-card hidden">
@@ -65,28 +52,14 @@
                     </div>
                     <div class="bank-separator"></div>
                     <div id="bankInfo" class="bank-info">
-                        <div class="bank-account">
-                            <span id="personAccount"> 123456 </span>
-                        </div>
-                        <div class="bank-balance">
-                            <span id="personBalance">
-                    0
-                </span>
-                        </div>
-
+                        <div class="bank-account"> <span id="personAccount"> 123456 </span> </div>
+                        <div class="bank-balance"> <span id="personBalance"> 0 </span> </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-    </div>
-
     <script src="sim_bank.js"></script>
-
 </body>
 
 </html>
