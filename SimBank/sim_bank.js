@@ -10,7 +10,7 @@ const months = ['Января', 'Февраля', 'Марта', 'Апреля', 
 ]
 let hideCard = null, worldRunning = true, timespeed = 1, curTime = new Date()
 curTime.setHours(8, 0, 0, 0)
-let nextStatUp = new Date(curTime.getTime() + 15 * 60000)
+let nextStatUp = new Date(curTime.getTime())
 
 class Peoples {
     constructor() {
