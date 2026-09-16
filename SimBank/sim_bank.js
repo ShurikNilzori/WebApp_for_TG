@@ -179,7 +179,7 @@ function worldtick() {
     if (!worldRunning) return
     curTime.setMinutes(curTime.getMinutes() + timespeed)
     allpeople.forEach(person => { person.chgMoney() })
-    getMostRich()
+    getMostRich(3)
     updateClock()
 }
 
