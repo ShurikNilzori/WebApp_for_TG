@@ -23,8 +23,9 @@ class Peoples {
 
     chgMoney() {
         if (curTime >= nextZP) {
-            this.cash += 1000
-            console.log('Зарплата')
+            const curZP = Math.floor(Math.random() * 1000 + 500)
+            this.cash += curZP
+            console.log('Зарплата:', this.body.fio, curZP)
         }
         if (curTime >= this.evtm) {
             this.evtm.setMinutes(curTime.getMinutes() + Math.floor(Math.random() * 50 + 10))
