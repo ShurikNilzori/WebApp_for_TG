@@ -383,3 +383,11 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
+
+.list-rich {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
